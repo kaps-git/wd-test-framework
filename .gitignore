@@ -1,0 +1,21 @@
+# Maven
+target
+
+# IntelliJ IDEA
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Eclipse
+.classpath
+.settings/
+.project
+
+# Misc
+bin
+test-output
+*.log
+*.log.*
+clover-report
+test-output
