@@ -19,3 +19,4 @@ test-output
 *.log.*
 clover-report
 test-output
+.DS_Store
