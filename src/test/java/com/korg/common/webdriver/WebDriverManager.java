@@ -8,11 +8,11 @@ public class WebDriverManager {
 	private static ThreadLocal<String> sessionId = new ThreadLocal<String>();	//For saucelabs
 
 	 
-    public static WebDriver getDriver() {
+    public static synchronized WebDriver getDriver() {
         return webDriver.get();
     }
  
-    static void setWebDriver(WebDriver driver) {
+    static synchronized void setWebDriver(WebDriver driver) {
         webDriver.set(driver);
     }
 
