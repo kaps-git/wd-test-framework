@@ -22,7 +22,7 @@ public class JsonUtil {
 	private static final Logger logger=Logger.getLogger(JsonUtil.class.getName());
 	
 	public JsonUtil(){
-		logger.info("Constructor: JsonUtil");
+		logger.info("~~~~ Constructor ~~~~");
 	}
 	
 	public Boolean checkIfElementExistsInJson(String json,String jsonPath){

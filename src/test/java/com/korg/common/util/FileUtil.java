@@ -35,7 +35,7 @@ public class FileUtil {
 	private boolean autoFlush = false;
 	
 	public FileUtil() {
-		
+		logger.info("~~~~ Constructor ~~~~");
 	}
 	
 	public void setFilePath(String value) {

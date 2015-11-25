@@ -23,7 +23,7 @@ public class ExcelUtil {
 	private static final Logger logger=Logger.getLogger(ExcelUtil.class.getName());
 	
 	public ExcelUtil(){
-		logger.info("Constructor: ExcelUtil");
+		logger.info("~~~~ Constructor ~~~~");
 	}
 	
 	/**
