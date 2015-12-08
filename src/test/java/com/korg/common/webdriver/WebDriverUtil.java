@@ -55,10 +55,10 @@ public class WebDriverUtil {
 	    		File screenshotFile = null;
 	    		
 	    		if(driver.getClass().getName().contains("RemoteWebDriver")) {
-	    			WebDriver augmentedDriver = new Augmenter().augment(WebDriverManager.getDriver());
+	    			WebDriver augmentedDriver = new Augmenter().augment(WebDriverFactory.getDriver());
 	    			screenshotFile = ((TakesScreenshot) augmentedDriver).getScreenshotAs(OutputType.FILE);    		
 	    		} else {
-	    			screenshotFile = ((TakesScreenshot) WebDriverManager.getDriver()).getScreenshotAs(OutputType.FILE);
+	    			screenshotFile = ((TakesScreenshot) WebDriverFactory.getDriver()).getScreenshotAs(OutputType.FILE);
 	    		}
 	    		
 	    		File destFile = new File(fileName);

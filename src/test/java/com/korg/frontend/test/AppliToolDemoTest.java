@@ -6,28 +6,34 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
 import com.applitools.eyes.Eyes;
+import com.korg.common.webdriver.WebDriverFactory;
 import com.korg.common.webdriver.WebDriverManager;
-import com.korg.common.webdriver.WebDriverManagerHelper;
 
 public class AppliToolDemoTest {
 	
 	public HashMap<String,String> getChromeBrowserConfiguration() {
 		HashMap<String,String> confMap = new HashMap<String, String>();
 		
-		confMap.put(WebDriverManagerHelper.BROWSER, "CHROME");
-		confMap.put(WebDriverManagerHelper.CHROME_DRIVER_PATH, "/Users/akapil/mysoftwares/chromedriver");
-		confMap.put(WebDriverManagerHelper.CHROME_BROWSER_PATH, "/Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome");
+		confMap.put(WebDriverManager.BROWSER, "CHROME");
+		confMap.put(WebDriverManager.CHROME_DRIVER_PATH, "/Users/akapil/mysoftwares/chromedriver");
+		confMap.put(WebDriverManager.CHROME_BROWSER_PATH, "/Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome");
 		
 		return confMap;
 	}
 	
 	@Test
 	public void AabacoHomePageVisualTest() throws Exception {
-		WebDriverManagerHelper wdHelper = new WebDriverManagerHelper();
-		wdHelper.initDriver(getChromeBrowserConfiguration());
+		HashMap<String,String> confMap = new HashMap<String, String>();
 		
-		WebDriverManager.maximizeBrowser();
-		WebDriver driver = WebDriverManager.getDriver(); 
+		confMap.put(WebDriverManager.BROWSER, "CHROME");
+		confMap.put(WebDriverManager.CHROME_DRIVER_PATH, "/Users/akapil/mysoftwares/chromedriver");
+		confMap.put(WebDriverManager.CHROME_BROWSER_PATH, "/Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome");
+		
+		WebDriverManager wdManager = new WebDriverManager();
+		wdManager.initDriver(confMap);
+		
+		WebDriverFactory.maximizeBrowser();
+		WebDriver driver = WebDriverFactory.getDriver(); 
 		
 		Eyes eyes = new Eyes();
 		eyes.setApiKey("mN9tVtYn4EX108htgwja3uUKhu4HuDSoLot3UVHpGsMD8110");
@@ -51,11 +57,11 @@ public class AppliToolDemoTest {
 	public void AabacoWebHostingOverviewPageVisualTest() throws Exception {
 		
 		
-		WebDriverManagerHelper wdHelper = new WebDriverManagerHelper();
-		wdHelper.initDriver(getChromeBrowserConfiguration());
+		WebDriverManager wdManager = new WebDriverManager();
+		wdManager.initDriver(getChromeBrowserConfiguration());
 		
-		WebDriverManager.maximizeBrowser();
-		WebDriver driver = WebDriverManager.getDriver(); 
+		WebDriverFactory.maximizeBrowser();
+		WebDriver driver = WebDriverFactory.getDriver(); 
 		
 		Eyes eyes = new Eyes();
 		eyes.setApiKey("mN9tVtYn4EX108htgwja3uUKhu4HuDSoLot3UVHpGsMD8110");
