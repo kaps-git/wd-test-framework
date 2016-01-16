@@ -1,0 +1,16 @@
+[
+		{
+			"browser" : "chrome",
+			"version" : "47.0",
+			"os" : "OS X 10.9",
+			"tags" : "",
+			"selected" : "true"
+		},
+		{
+			"browser" : "firefox",
+			"version" : "43.0",
+			"os" : "OS X 10.9",
+			"tags" : "",
+			"selected" : "false"
+		}
+]
