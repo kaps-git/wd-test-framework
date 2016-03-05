@@ -1,0 +1,13 @@
+{	
+	 "qa":{
+	 		"general" : {
+	 			"userid" : "test_user@yahoo.com",
+	 			"yuid"   : "test_user#v4", 
+	 			"password" : "testuserpassword",
+	 			"paymentmethods" : [
+	 				{"cctype" : "VISA", "ccNumber" : "12123123123123123", "cvv" : "123", "expiryMonth" : "2", "expiryYear" : "2018"},
+	 				{"cctype" : "AMEX", "ccNumber" : "333323123123123123", "cvv" : "9900", "expiryMonth" : "1", "expiryYear" : "2017"}
+	 			]
+	 		}	
+	 } 
+}

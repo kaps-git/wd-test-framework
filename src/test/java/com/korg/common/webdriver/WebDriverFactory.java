@@ -2,10 +2,12 @@ package com.korg.common.webdriver;
 
 import java.awt.Toolkit;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 
 public class WebDriverFactory {
+	private static final Logger logger=Logger.getLogger(WebDriverFactory.class.getName());
 	
 	private static ThreadLocal<WebDriver> webDriver = new ThreadLocal<WebDriver>();
 	private static ThreadLocal<String> sessionId = new ThreadLocal<String>();	//For saucelabs
