@@ -2,13 +2,13 @@
 	{
 		"name" : "Aabaco Home Page",
 		"url"  : "https://www.aabacosmallbusiness.com/",
-		"assertData" : "[Start selling online],[Create your website][<a id=\"market-locally-get-started\"]",
+		"assertData" : "[Start selling online],[Create your website],[<a id=\"market-locally-get-started\"]",
 		"enabled" : "true"
 	},
 	{
 		"name" : "Aabaco Web Hosting Overview Page",
 		"url"  : "https://www.aabacosmallbusiness.com/webhosting",
-		"assertData" : "[Start selling online],[Create your website][<a id=\"market-locally-get-started\"]",
-		"enabled" : "true"
+		"assertData" : "[Start selling online],[Create your website],[<a id=\"market-locally-get-started\"]",
+		"enabled" : "false"
 	}
 ]

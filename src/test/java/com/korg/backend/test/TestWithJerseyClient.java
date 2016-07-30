@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import org.apache.log4j.Logger;
 import org.glassfish.jersey.apache.connector.ApacheClientProperties;
@@ -15,6 +16,7 @@ import org.glassfish.jersey.client.ClientConfig;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -25,6 +27,8 @@ import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.client.urlconnection.URLConnectionClientHandler;
+
+import org.testng.asserts.*;
 
 public class TestWithJerseyClient {
 	private static final Logger logger=Logger.getLogger(TestWithJerseyClient.class.getName());
@@ -116,13 +120,36 @@ public class TestWithJerseyClient {
 	
 	 @Test(dataProvider = "websiteProvider")
 	public void testWebPagesGives200OK(HashMap<String,String> webPageInfo) throws Exception {
-		 Client client = new Client();
 		 
-		 WebResource webResource = client.resource(webPageInfo.get("url"));
-		 ClientResponse response = webResource.accept("text/html").get(ClientResponse.class);
-		 System.out.println(webPageInfo.get("name") + "-->" + response.getStatus());
+		 if(webPageInfo.get("enabled").equalsIgnoreCase("true")) {
+			 
+			 Client client = new Client();
+			 
+			 WebResource webResource = client.resource(webPageInfo.get("url"));
+			 ClientResponse response = webResource.accept("text/html").get(ClientResponse.class);
+			 System.out.println(webPageInfo.get("name") + "-->" + response.getStatus());
+			 String assertData = webPageInfo.get("assertData");
+			 
+			 if(response.getStatus() == 200) {
+					String responseString = response.getEntity(String.class);
+					System.out.println(responseString);
+					//get assert data
+					StringTokenizer st = new StringTokenizer(assertData, ",");
+					while(st.hasMoreTokens()) {
+						String a = st.nextToken().replace("[", "").replace("]", "");
+						System.out.println(">>> Verifying --- " + a);
+						//assertList.add(a);
+						if(responseString.contains(a)) {
+							Assert.assertTrue(responseString.contains(a), "Expected content in Respones :- " + a);
+							
+						}
+					}
+					
+			 }
+		 }
+				
 		 
-	}
+	}//end test
 	 
 	@Test 
 	public void exampleWithHttpConnectionFactory() throws Exception {
