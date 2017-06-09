@@ -100,7 +100,7 @@ public class BaseTest {
 		
     	if(envBrowserConfJson == null) {
     		//read from repo browser config file
-    		String filepath = new java.io.File(".").getCanonicalPath() + "/src/test/resources/configBrowsers.json";
+    		String filepath = new java.io.File(".").getCanonicalPath() + "/src/test/resources/config/browserProvider.json";
     		System.out.println("File path : " + filepath);
     		FileUtil fUtil = new FileUtil();
     		String json = fUtil.readFileContentsAsString(filepath);

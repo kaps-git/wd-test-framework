@@ -7,6 +7,7 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.HashMap;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
@@ -17,6 +18,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import com.saucelabs.common.SauceOnDemandAuthentication;
+import com.korg.common.Constants;
 
 
 /**
@@ -25,7 +27,7 @@ import com.saucelabs.common.SauceOnDemandAuthentication;
  *
  */
 public class WebDriverManager  {
-	
+	private static final Logger logger=Logger.getLogger(WebDriverManager.class.getName());
 	
 	public static String BROWSER = "BROWSER";
 	public static String VERSION = "VERSION";
@@ -125,10 +127,34 @@ public class WebDriverManager  {
     	for (String key : configMap.keySet()) {
     		
     		//set browser name
-    		if(key.equals(BROWSER)){
+    		if(key.equals(Constants.BROWSER)){
     			browser = configMap.get(key);
     			setBrowserType(browser);
-    			capabilities.setCapability(CapabilityType.BROWSER_NAME, browser);
+    			//capabilities.setCapability(CapabilityType.BROWSER_NAME, browser);
+    			
+    			if(browser.toLowerCase().equals("firefox")) {
+    				
+        			//**if you want to use legacy firefox
+        			//Ref: http://seleniumsimplified.com/2016/10/upgrading-to-selenium-3-with-my-first-selenium-project/
+
+    				if(configMap.containsKey(Constants.FIREFOX_BINARY_PATH)) {
+    					capabilities.setCapability("firefox_binary", new File(configMap.get(Constants.FIREFOX_BINARY_PATH)).getAbsolutePath());
+    					capabilities.setCapability("marionette", false);
+    				} else {
+    					logger.error("Provide value for FIREFOX_BINARY_PATH");
+    				}
+    				
+    				//***for gecko driver
+    				if(configMap.containsKey(Constants.GECKO_DRIVER_PATH)) {
+    					System.setProperty("webdriver.gecko.driver", configMap.get(Constants.GECKO_DRIVER_PATH));
+    					//capabilities.setCapability("marionette", true);
+    				} else {
+    					throw new Exception("Provide value for GECKO_DRIVER_PATH");
+    				}
+    				
+    			}
+    			
+    			
     		}
     		
     		//set browser version

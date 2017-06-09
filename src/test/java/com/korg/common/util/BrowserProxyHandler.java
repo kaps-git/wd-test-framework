@@ -23,6 +23,8 @@ public class BrowserProxyHandler {
 			proxy.setProxyType(org.openqa.selenium.Proxy.ProxyType.PAC);
 			proxy.setProxyAutoconfigUrl(proxyPACUrl);
 			caps.setCapability(CapabilityType.PROXY, proxy);
+			caps.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+			caps.setAcceptInsecureCerts(true);
 		} else {
 			logger.info("Setting DIRECT connection avoiding Proxy");
 			proxy.setProxyType(org.openqa.selenium.Proxy.ProxyType.DIRECT);
@@ -40,6 +42,8 @@ public class BrowserProxyHandler {
 		proxy.setAutodetect(false);
 		proxy.setHttpProxy(httpProxy);
 		caps.setCapability(CapabilityType.PROXY, proxy);
+		caps.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+		caps.setAcceptInsecureCerts(true);
 		return caps;
 	}//method
 	
@@ -51,6 +55,8 @@ public class BrowserProxyHandler {
 		proxy.setAutodetect(false);
 		proxy.setSocksProxy(socksProxy);
 		caps.setCapability(CapabilityType.PROXY, proxy);
+		caps.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+		caps.setAcceptInsecureCerts(true);
 		return caps;
 	}//method
 	
